@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>Cộng trong phạm vi 10</title>
+<script src="../jquery.min.js" type="text/javascript"></script>
+<link rel=stylesheet href='style.css' type='text/css'>
+<script type="text/javascript">
+function randnum(sm) {
+	return Math.floor(Math.random()	* sm);
+}
+var pv=20;
+$(document).ready(function(){
+	var a=0,b=0,c=0;
+	function lamlai() {
+		a=randnum(pv);
+		b=randnum(pv-a);
+		c=a+b;
+		$("#so_a").html(a);
+		$("#so_b").html(b);
+		$("#ketqua").html("?");
+	}
+	lamlai();
+	$(".chuso").click(function(){
+		if ($("#ketqua").text()=="?") {
+			$("#ketqua").html($(this).text());
+		} else {
+			$("#ketqua").append($(this).text());
+		}
+	});
+	$("#nutxoa").click(function(){
+		var txt=$("#ketqua").text()+"";
+		if (txt.length>0) {
+			if (txt.indexOf("?")<0)
+			txt=txt.substr(0,txt.length-1);
+			$("#ketqua").html(txt);
+		}
+	});
+	$("#nopbai").click(function(){
+		
+		if (parseInt($("#ketqua").text())==c) {
+			$("#thongbao").html("ĐÚNG");
+			$("#banphimso").hide();
+		} else {
+			$("#thongbao").html("SAI");
+			//$("#ketqua").html("?");
+		}
+	});
+	$("#baikhac").click(function(){
+		lamlai();
+		$("#thongbao").html("?");
+		$("#banphimso").show();
+
+	});
+});
+</script>
+</head>
+
+<body>
+<div align="center" id="cauhoi">
+<span class="bieuthuc">
+<span class="nut conso" id="so_a">a</span>
+<span class="pheptoan">+</span>
+<span class="nut conso" id="so_b">b</span>
+<span class="daubang">=</span>
+<span class="nut chuabiet  " id="ketqua">c</span>
+<span id="thongbao"> </span>
+</span>
+</div>
+<hr/>
+<div align="center" id="banphimso">
+<span class="nut chuso">1</span>
+<span class="nut chuso">2</span>
+<span class="nut chuso">3</span>
+<span class="nut chuso">4</span><br/>
+<span class="nut chuso">5</span>
+<span class="nut chuso">6</span>
+<span class="nut chuso">7</span>
+<span class="nut chuso">8</span><br/>
+<span class="nut chuso">9</span>
+<span class="nut chuso">0</span>
+
+<span class="nutlenh chucnang" id="nutxoa">X</span>
+
+<span class="nutlenh chucnang" id="nopbai">N</span><br/>
+
+</div>
+<span class="nutlenh chucnang" id="baikhac">Bài khác</span>
+</body>
+</html>
