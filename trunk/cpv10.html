@@ -19,6 +19,8 @@ $(document).ready(function(){
 		$("#so_a").html(a);
 		$("#so_b").html(b);
 		$("#ketqua").html("?");
+		$("#thongbao").html("?");
+		$("#banphimso").show();
 	}
 	lamlai();
 	$(".chuso").click(function(){
@@ -41,6 +43,7 @@ $(document).ready(function(){
 		if (parseInt($("#ketqua").text())==c) {
 			$("#thongbao").html("ĐÚNG");
 			$("#banphimso").hide();
+			setTimeout(lamlai,3000);
 		} else {
 			$("#thongbao").html("SAI");
 			//$("#ketqua").html("?");
@@ -48,9 +51,6 @@ $(document).ready(function(){
 	});
 	$("#baikhac").click(function(){
 		lamlai();
-		$("#thongbao").html("?");
-		$("#banphimso").show();
-
 	});
 });
 </script>
